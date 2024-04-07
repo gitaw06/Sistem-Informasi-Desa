@@ -80,6 +80,12 @@ $desa = App\Desa::find(1);
                     <!-- Navbar items -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a class="nav-link nav-link-icon" href="{{ route('masuk') }}">
+                                <i class="fas fa-user"></i>
+                                <span class="nav-link-inner--text">Login</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link nav-link-icon" href="{{ route('home.index') }}">
                                 <i class="fas fa-home"></i>
                                 <span class="nav-link-inner--text">Beranda</span>
@@ -113,10 +119,6 @@ $desa = App\Desa::find(1);
                                 <a class="dropdown-item @if (Request::segment(1) == 'laporan-apbdes') active @endif" href="{{ route('laporan-apbdes') }}">
                                     <i class="fas fa-fw fa-money-check-alt text-success"></i>
                                     <span class="nav-link-inner--text">Laporan APBDes</span>
-                                </a>
-                                <a class="dropdown-item @if (Request::segment(1) == 'laporan-apbdes') active @endif" href="{{ route('masuk') }}">
-                                    <i class="fas fa-fw fa-money-check-alt text-success"></i>
-                                    <span class="nav-link-inner--text">Login</span>
                                 </a>
                             </div>
                         </li>
