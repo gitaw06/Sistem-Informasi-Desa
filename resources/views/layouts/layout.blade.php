@@ -1,5 +1,5 @@
 @php
-    $desa = App\Desa::find(1);
+$desa = App\Desa::find(1);
 @endphp
 <!--
 
@@ -57,8 +57,7 @@
                 <a class="navbar-brand" href="{{ url('') }}">
                     <h2 class="h1 text-white"><b>Desa {{ $desa->nama_desa }}</b></h2>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbar-collapse-main">
@@ -71,9 +70,7 @@
                                 </a>
                             </div>
                             <div class="col-6 collapse-close">
-                                <button type="button" class="navbar-toggler" data-toggle="collapse"
-                                    data-target="#navbar-collapse-main" aria-controls="sidenav-main"
-                                    aria-expanded="false" aria-label="Toggle sidenav">
+                                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
                                     <span></span>
                                     <span></span>
                                 </button>
@@ -117,56 +114,60 @@
                                     <i class="fas fa-fw fa-money-check-alt text-success"></i>
                                     <span class="nav-link-inner--text">Laporan APBDes</span>
                                 </a>
+                                <a class="dropdown-item @if (Request::segment(1) == 'laporan-apbdes') active @endif" href="{{ route('masuk') }}">
+                                    <i class="fas fa-fw fa-money-check-alt text-success"></i>
+                                    <span class="nav-link-inner--text">Login</span>
+                                </a>
                             </div>
                         </li>
                         @auth
-                            <li class="nav-item dropdown">
-                                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-bars"></i> <span class="nav-link-inner--text">Menu Admin</span>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bars"></i> <span class="nav-link-inner--text">Menu Admin</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right py-0 overflow-hidden">
+                                <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                    <i class="fas fa-fw fa-tachometer-alt text-blue"></i> Dashboard
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right py-0 overflow-hidden">
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
-                                        <i class="fas fa-fw fa-tachometer-alt text-blue"></i> Dashboard
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('penduduk.index') }}">
-                                        <i class="fas fa-fw fa-users text-info"></i> Kelola Penduduk
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('dusun.index') }}">
-                                        <i class="fas fa-fw fa-map-marker-alt text-yellow"></i> Kelola Dusun
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('anggaran-realisasi?jenis=pendapatan&tahun='.date('Y')) }}">
-                                        <i class="fas fa-fw fa-coins text-success"></i> Kelola APBDes
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('surat.index') }}">
-                                        <i class="fas fa-fw fa-file-alt text-primary"></i> Kelola Surat
-                                    </a>
-                                    <a href="{{ route('pemerintahan-desa.index') }}" class="dropdown-item">
-                                        <i class="fas fa-fw fa-atlas text-success"></i> Kelola Informasi Pemerintahan Desa
-                                    </a>
-                                    <a href="{{ route('berita.index') }}" class="dropdown-item">
-                                        <i class="fas fa-fw fa-newspaper text-cyan"></i> Kelola Berita
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('gallery.index') }}">
-                                        <i class="fas fa-fw fa-images text-orange"></i> Kelola Gallery
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('slider.index') }}">
-                                        <i class="fas fa-fw fa-images text-purple"></i> Kelola Slider
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('profil-desa') }}">
-                                        <i class="fas fa-fw fa-users text-info"></i> Profil Desa
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('profil') }}">
-                                        <i class="fas fa-fw fa-user text-yellow"></i> Profil Saya
-                                    </a>
-                                    <hr class="m-0">
-                                    <a class="dropdown-item" href="{{ route('keluar') }}" onclick="event.preventDefault(); document.getElementById('form-keluar').submit();">
-                                        <i class="fas fa-fw fa-sign-out-alt"></i> Keluar
-                                    </a>
-                                    <form id="form-keluar" action="{{ route('keluar') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <a class="dropdown-item" href="{{ route('penduduk.index') }}">
+                                    <i class="fas fa-fw fa-users text-info"></i> Kelola Penduduk
+                                </a>
+                                <a class="dropdown-item" href="{{ route('dusun.index') }}">
+                                    <i class="fas fa-fw fa-map-marker-alt text-yellow"></i> Kelola Dusun
+                                </a>
+                                <a class="dropdown-item" href="{{ url('anggaran-realisasi?jenis=pendapatan&tahun='.date('Y')) }}">
+                                    <i class="fas fa-fw fa-coins text-success"></i> Kelola APBDes
+                                </a>
+                                <a class="dropdown-item" href="{{ route('surat.index') }}">
+                                    <i class="fas fa-fw fa-file-alt text-primary"></i> Kelola Surat
+                                </a>
+                                <a href="{{ route('pemerintahan-desa.index') }}" class="dropdown-item">
+                                    <i class="fas fa-fw fa-atlas text-success"></i> Kelola Informasi Pemerintahan Desa
+                                </a>
+                                <a href="{{ route('berita.index') }}" class="dropdown-item">
+                                    <i class="fas fa-fw fa-newspaper text-cyan"></i> Kelola Berita
+                                </a>
+                                <a class="dropdown-item" href="{{ route('gallery.index') }}">
+                                    <i class="fas fa-fw fa-images text-orange"></i> Kelola Gallery
+                                </a>
+                                <a class="dropdown-item" href="{{ route('slider.index') }}">
+                                    <i class="fas fa-fw fa-images text-purple"></i> Kelola Slider
+                                </a>
+                                <a class="dropdown-item" href="{{ route('profil-desa') }}">
+                                    <i class="fas fa-fw fa-users text-info"></i> Profil Desa
+                                </a>
+                                <a class="dropdown-item" href="{{ route('profil') }}">
+                                    <i class="fas fa-fw fa-user text-yellow"></i> Profil Saya
+                                </a>
+                                <hr class="m-0">
+                                <a class="dropdown-item" href="{{ route('keluar') }}" onclick="event.preventDefault(); document.getElementById('form-keluar').submit();">
+                                    <i class="fas fa-fw fa-sign-out-alt"></i> Keluar
+                                </a>
+                                <form id="form-keluar" action="{{ route('keluar') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -184,8 +185,7 @@
                 </div>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
-                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
                 </svg>
             </div>
@@ -199,14 +199,12 @@
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-left text-muted">
-                            © {{ date('Y') }} <a href="{{ url('') }}" class="font-weight-bold ml-1"
-                                target="_blank">Desa {{ $desa->nama_desa }}</a>
+                            © {{ date('Y') }} <a href="{{ url('') }}" class="font-weight-bold ml-1" target="_blank">Desa {{ $desa->nama_desa }}</a>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-right text-muted">
-                            Powered By <a href="https://github.com/maulanakevinp/simapeda/tree/1.2" class="font-weight-bold ml-1"
-                                target="_blank">SIMAPEDA</a>
+                            Powered By <a href="https://github.com/maulanakevinp/simapeda/tree/1.2" class="font-weight-bold ml-1" target="_blank">SIMAPEDA</a>
                         </div>
                     </div>
                 </div>
