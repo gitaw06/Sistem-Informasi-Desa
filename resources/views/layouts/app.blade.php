@@ -68,7 +68,7 @@ $desa = App\Desa::find(1);
                                     <img alt="{{ asset(Storage::url(auth()->user()->foto_profil)) }}" src="{{ asset(Storage::url(auth()->user()->foto_profil)) }}">
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->nama }}</span>
+                                    <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->nama }} ({{ auth()->user()->role }})</span>
                                 </div>
                             </div>
                         </a>
