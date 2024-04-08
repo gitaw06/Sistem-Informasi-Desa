@@ -79,12 +79,14 @@ $desa = App\Desa::find(1);
                     </div>
                     <!-- Navbar items -->
                     <ul class="navbar-nav ml-auto">
+                        @guest <!-- Menampilkan saat pengguna belum login -->
                         <li class="nav-item">
                             <a class="nav-link nav-link-icon" href="{{ route('masuk') }}">
                                 <i class="fas fa-user"></i>
                                 <span class="nav-link-inner--text">Login</span>
                             </a>
                         </li>
+                        @endguest
                         <li class="nav-item">
                             <a class="nav-link nav-link-icon" href="{{ route('home.index') }}">
                                 <i class="fas fa-home"></i>
@@ -170,7 +172,7 @@ $desa = App\Desa::find(1);
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                        @endauth
                     </ul>
                 </div>
             </div>
