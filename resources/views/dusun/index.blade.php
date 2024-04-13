@@ -25,7 +25,9 @@
                                 <p class="mb-0 text-sm">Kelola Dusun</p>
                             </div>
                             <div class="mb-3">
+                                @if (auth()->user()->role == "admin")
                                 <a href="{{ route('dusun.create') }}" class="btn btn-success" title="Tambah"><i class="fas fa-plus"></i> Tambah Dusun</a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -58,22 +60,26 @@
                 <thead>
                     <th class="text-center" width="20px">#</th>
                     <th class="text-center">Nama Dusun</th>
+                    @if (auth()->user()->role == "admin")
                     <th class="text-center">Opsi</th>
+                    @endif
                 </thead>
                 <tbody>
                     @forelse ($dusun as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td>
-                                <a href="{{ route('dusun.edit', $item) }}" class="btn btn-sm btn-success" data-toggle="tooltip" title="Edit"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-sm btn-danger hapus-data" data-nama="{{ $item->nama }}" data-action="{{ route("dusun.destroy", $item) }}" data-toggle="tooltip" title="Hapus" href="#modal-hapus"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->nama }}</td>
+                        @if (auth()->user()->role == "admin")
+                        <td>
+                            <a href="{{ route('dusun.edit', $item) }}" class="btn btn-sm btn-success" data-toggle="tooltip" title="Edit"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-sm btn-danger hapus-data" data-nama="{{ $item->nama }}" data-action="{{ route("dusun.destroy", $item) }}" data-toggle="tooltip" title="Hapus" href="#modal-hapus"><i class="fas fa-trash"></i></a>
+                        </td>
+                        @endif
+                    </tr>
                     @empty
-                        <tr>
-                            <td colspan="15" align="center">Data tidak tersedia</td>
-                        </tr>
+                    <tr>
+                        <td colspan="15" align="center">Data tidak tersedia</td>
+                    </tr>
                     @endforelse
                 </tbody>
             </table>
@@ -104,7 +110,7 @@
             </div>
 
             <div class="modal-footer">
-                <form id="form-hapus" action="" method="POST" >
+                <form id="form-hapus" action="" method="POST">
                     @csrf @method('delete')
                     <button type="submit" class="btn btn-white">Yakin</button>
                 </form>
