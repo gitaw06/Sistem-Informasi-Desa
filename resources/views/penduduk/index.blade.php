@@ -18,9 +18,11 @@
                                 <h2 class="mb-0">Penduduk</h2>
                                 <p class="mb-0 text-sm">Kelola Penduduk</p>
                             </div>
+                            @if (auth()->user()->role == "admin")
                             <div class="mb-3">
                                 <a href="{{ route('penduduk.create') }}" class="btn btn-success" title="Tambah"><i class="fas fa-plus"></i> Tambah Penduduk</a>
                             </div>
+                            @endif
                         </div>
                         <form class="navbar-search mt-3 cari-none" action="{{ URL::current() }}" method="GET">
                             <div class="form-group mb-0">
@@ -152,44 +154,49 @@
                 </thead>
                 <tbody>
                     @forelse ($penduduk as $item)
-                        <tr>
-                            <td>
-                                <a href="{{ route('penduduk.edit', $item) }}" class="btn btn-sm btn-success" data-toggle="tooltip" title="Edit"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-sm btn-danger hapus-data" data-nama="{{ $item->nama }}" data-action="{{ route("penduduk.destroy", $item) }}" data-toggle="tooltip" title="Hapus" href="#modal-hapus"><i class="fas fa-trash"></i></a>
-                            </td>
-                            <td>{{ $item->nik }}</td>
-                            <td>{{ $item->kk }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->jenis_kelamin == 1 ? "Laki-laki" : "Perempuan" }}</td>
-                            <td>{{ $item->tempat_lahir }}, {{ date('d/m/Y',strtotime($item->tanggal_lahir)) }}</td>
-                            <td>{{ $item->darah ? $item->darah->golongan : '-' }}</td>
-                            <td>{{ $item->agama->nama }}</td>
-                            <td>{{ $item->pendidikan ? $item->pendidikan->nama : '-' }}</td>
-                            <td>{{ $item->pekerjaan ? $item->pekerjaan->nama : '-' }}</td>
-                            <td>{{ $item->statusPerkawinan->nama }}</td>
-                            <td>{{ $item->statusHubunganDalamKeluarga->nama }}</td>
-                            <td>
-                                @php
-                                    switch ($item->kewarganegaraan) {
-                                        case 1:
-                                            echo "WNI";
-                                            break;
-                                        case 2:
-                                            echo "WNA";
-                                            break;
-                                        case 3:
-                                            echo "Dua Kewarganegaraan";
-                                            break;
-                                    }
-                                @endphp
-                            </td>
-                            <td>{{ $item->nama_ayah }}</td>
-                            <td>{{ $item->nama_ibu }}</td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @if (auth()->user()->role == "admin")
+                            <a href="{{ route('penduduk.edit', $item) }}" class="btn btn-sm btn-success" data-toggle="tooltip" title="Edit"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-sm btn-danger hapus-data" data-nama="{{ $item->nama }}" data-action="{{ route("penduduk.destroy", $item) }}" data-toggle="tooltip" title="Hapus" href="#modal-hapus"><i class="fas fa-trash"></i></a>
+                            @endif
+                            @if (auth()->user()->role == "kepdes")
+                            {{ $loop->iteration }}
+                            @endif
+                        </td>
+                        <td>{{ $item->nik }}</td>
+                        <td>{{ $item->kk }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->jenis_kelamin == 1 ? "Laki-laki" : "Perempuan" }}</td>
+                        <td>{{ $item->tempat_lahir }}, {{ date('d/m/Y',strtotime($item->tanggal_lahir)) }}</td>
+                        <td>{{ $item->darah ? $item->darah->golongan : '-' }}</td>
+                        <td>{{ $item->agama->nama }}</td>
+                        <td>{{ $item->pendidikan ? $item->pendidikan->nama : '-' }}</td>
+                        <td>{{ $item->pekerjaan ? $item->pekerjaan->nama : '-' }}</td>
+                        <td>{{ $item->statusPerkawinan->nama }}</td>
+                        <td>{{ $item->statusHubunganDalamKeluarga->nama }}</td>
+                        <td>
+                            @php
+                            switch ($item->kewarganegaraan) {
+                            case 1:
+                            echo "WNI";
+                            break;
+                            case 2:
+                            echo "WNA";
+                            break;
+                            case 3:
+                            echo "Dua Kewarganegaraan";
+                            break;
+                            }
+                            @endphp
+                        </td>
+                        <td>{{ $item->nama_ayah }}</td>
+                        <td>{{ $item->nama_ibu }}</td>
+                    </tr>
                     @empty
-                        <tr>
-                            <td colspan="15" align="center">Data tidak tersedia</td>
-                        </tr>
+                    <tr>
+                        <td colspan="15" align="center">Data tidak tersedia</td>
+                    </tr>
                     @endforelse
                 </tbody>
             </table>
@@ -221,7 +228,7 @@
             </div>
 
             <div class="modal-footer">
-                <form id="form-hapus" action="" method="POST" >
+                <form id="form-hapus" action="" method="POST">
                     @csrf @method('delete')
                     <button type="submit" class="btn btn-white">Yakin</button>
                 </form>
