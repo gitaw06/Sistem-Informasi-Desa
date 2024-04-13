@@ -95,13 +95,13 @@
                     <span class="nav-link-inner--text">Kelola Surat</span>
                 </a>
             </li>
+            @if (auth()->user()->role == "admin")
             <li class="nav-item">
                 <a class="nav-link @if (Request::segment(1) == 'kelola-pemerintahan-desa' || Request::segment(1) == 'tambah-pemerintahan-desa' || Request::segment(1) == 'pemerintahan-desa') active @endif" href="{{ route('pemerintahan-desa.index') }}">
                     <i class="fas fa-atlas text-success"></i>
                     <span class="nav-link-inner--text">Kelola Informasi Pemerintahan Desa</span>
                 </a>
             </li>
-            @if (auth()->user()->role == "admin")
             <li class="nav-item">
                 <a class="nav-link @if (Request::segment(1) == 'kelola-berita' || Request::segment(1) == 'tambah-berita' || Request::segment(1) == 'berita') active @endif" href="{{ route('berita.index') }}">
                     <i class="fas fa-newspaper text-cyan"></i>
