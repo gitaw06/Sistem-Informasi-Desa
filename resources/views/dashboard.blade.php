@@ -220,8 +220,8 @@
             </div>
         </div>
     </div> -->
-    @include('statistik-penduduk.card')
-    <div class="col-md-12 mb-4">
+    <!-- @include('statistik-penduduk.card') -->
+    <!-- <div class="col-md-12 mb-4">
         <div class="card shadow h-100">
             <div class="card-header">
                 <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-lg-between text-center text-lg-left">
@@ -238,7 +238,7 @@
                 @include('anggaran-realisasi.grafik-apbdes')
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 @endsection
 
