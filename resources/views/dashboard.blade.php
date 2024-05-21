@@ -163,7 +163,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-6 mb-4">
+    <!-- <div class="col-lg-6 mb-4">
         <div class="card shadow h-100">
             <div class="card-header">
                 <div
@@ -219,7 +219,7 @@
                 <div id="chart-tahunan" style="height: 400px; margin: 0 auto"></div>
             </div>
         </div>
-    </div>
+    </div> -->
     @include('statistik-penduduk.card')
     <div class="col-md-12 mb-4">
         <div class="card shadow h-100">
@@ -297,58 +297,64 @@
     let chart_tahunan = Highcharts.chart('chart-tahunan', bar);
     chart_tahunan.title.textSetter("Grafik Cetak Surat Tahunan");
 
-    $(document).ready(function(){
-        $("#loading-tanggal-surat").css('display','');
-        $("#loading-bulan-surat").css('display','');
-        $("#loading-tahun-surat").css('display','');
-        $("#tanggal").css('display','none');
-        $("#bulan").css('display','none');
-        $("#tahun").css('display','none');
+    $(document).ready(function() {
+        $("#loading-tanggal-surat").css('display', '');
+        $("#loading-bulan-surat").css('display', '');
+        $("#loading-tahun-surat").css('display', '');
+        $("#tanggal").css('display', 'none');
+        $("#bulan").css('display', 'none');
+        $("#tahun").css('display', 'none');
 
-        $.get("{{ route('surat-harian') }}", function (response) {
-            $("#loading-tanggal-surat").css('display','none');
-            $("#tanggal").css('display','');
+        $.get("{{ route('surat-harian') }}", function(response) {
+            $("#loading-tanggal-surat").css('display', 'none');
+            $("#tanggal").css('display', '');
             chart_harian.series[0].setData(response);
         });
 
-        $.get("{{ route('surat-bulanan') }}", function (response) {
-            $("#loading-bulan-surat").css('display','none');
-            $("#bulan").css('display','');
+        $.get("{{ route('surat-bulanan') }}", function(response) {
+            $("#loading-bulan-surat").css('display', 'none');
+            $("#bulan").css('display', '');
             chart_bulanan.series[0].setData(response);
         });
 
-        $.get("{{ route('surat-tahunan') }}", function (response) {
-            $("#loading-tahun-surat").css('display','none');
-            $("#tahun").css('display','');
+        $.get("{{ route('surat-tahunan') }}", function(response) {
+            $("#loading-tahun-surat").css('display', 'none');
+            $("#tahun").css('display', '');
             chart_tahunan.series[0].setData(response);
         });
 
-        $("#tanggal").change(function () {
-            $("#loading-tanggal-surat").css('display','');
-            $("#tanggal").css('display','none');
-            $.get("{{ route('surat-harian') }}", {'tanggal': $(this).val()}, function (response) {
-                $("#tanggal").css('display','');
-                $("#loading-tanggal-surat").css('display','none');
+        $("#tanggal").change(function() {
+            $("#loading-tanggal-surat").css('display', '');
+            $("#tanggal").css('display', 'none');
+            $.get("{{ route('surat-harian') }}", {
+                'tanggal': $(this).val()
+            }, function(response) {
+                $("#tanggal").css('display', '');
+                $("#loading-tanggal-surat").css('display', 'none');
                 chart_harian.series[0].setData(response);
             });
         });
 
-        $("#bulan").change(function () {
-            $("#loading-bulan-surat").css('display','');
-            $("#bulan").css('display','none');
-            $.get("{{ route('surat-bulanan') }}", {'bulan': $(this).val()}, function (response) {
-                $("#bulan").css('display','');
-                $("#loading-bulan-surat").css('display','none');
+        $("#bulan").change(function() {
+            $("#loading-bulan-surat").css('display', '');
+            $("#bulan").css('display', 'none');
+            $.get("{{ route('surat-bulanan') }}", {
+                'bulan': $(this).val()
+            }, function(response) {
+                $("#bulan").css('display', '');
+                $("#loading-bulan-surat").css('display', 'none');
                 chart_bulanan.series[0].setData(response);
             });
         });
 
-        $("#tahun").change(function () {
-            $("#loading-tahun-surat").css('display','');
-            $("#tahun").css('display','none');
-            $.get("{{ route('surat-tahunan') }}", {'tahun': $(this).val()}, function (response) {
-                $("#tahun").css('display','');
-                $("#loading-tahun-surat").css('display','none');
+        $("#tahun").change(function() {
+            $("#loading-tahun-surat").css('display', '');
+            $("#tahun").css('display', 'none');
+            $.get("{{ route('surat-tahunan') }}", {
+                'tahun': $(this).val()
+            }, function(response) {
+                $("#tahun").css('display', '');
+                $("#loading-tahun-surat").css('display', 'none');
                 chart_tahunan.series[0].setData(response);
             });
         });
