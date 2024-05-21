@@ -83,12 +83,6 @@
                     <span class="nav-link-inner--text">Kelola Dusun</span>
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link @if (Request::segment(1) == 'anggaran-realisasi' || Request::segment(1) == 'tambah-anggaran-realisasi') active @endif" href="{{ url('anggaran-realisasi?jenis=pendapatan&tahun='.date('Y')) }}">
-                    <i class="fas fa-coins text-success"></i>
-                    <span class="nav-link-inner--text">Kelola APBDes</span>
-                </a>
-            </li> -->
             <li class="nav-item">
                 <a class="nav-link @if (Request::segment(1) == 'surat' || Request::segment(1) == 'tambah-surat') active @endif" href="{{ route('surat.index') }}">
                     <i class="ni ni-single-copy-04 text-primary"></i>
@@ -96,6 +90,12 @@
                 </a>
             </li>
             @if (auth()->user()->role == "admin")
+            <li class="nav-item">
+                <a class="nav-link @if (Request::segment(1) == 'anggaran-realisasi' || Request::segment(1) == 'tambah-anggaran-realisasi') active @endif" href="{{ url('anggaran-realisasi?jenis=pendapatan&tahun='.date('Y')) }}">
+                    <i class="fas fa-coins text-success"></i>
+                    <span class="nav-link-inner--text">Kelola APBDes</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link @if (Request::segment(1) == 'kelola-pemerintahan-desa' || Request::segment(1) == 'tambah-pemerintahan-desa' || Request::segment(1) == 'pemerintahan-desa') active @endif" href="{{ route('pemerintahan-desa.index') }}">
                     <i class="fas fa-atlas text-success"></i>
