@@ -33,8 +33,15 @@
 @endsection
 
 @section('header')
-<h1 class="text-white text-sm text-muted">SELAMAT DATANG DI WEBSITE RESMI</h1>
-<h2 class="text-lead text-white">DESA {{ Str::upper($desa->nama_desa) }} <br> KECAMATAN {{ Str::upper($desa->nama_kecamatan) }} <br />KABUPATEN {{ Str::upper($desa->nama_kabupaten) }}</h2>
+<h1 class="text-white text-muted" style="font-size: 40px;">SELAMAT DATANG</h1>
+<!-- <h2 class="text-lead text-white">DESA {{ Str::upper($desa->nama_desa) }}</h2> -->
+<marquee behavior="scroll" direction="" style="border: 2px solid white;">
+    <h2 class="text-lead text-white">DESA {{ Str::upper($desa->nama_desa) }} KECAMATAN {{ Str::upper($desa->nama_kecamatan) }} KABUPATEN {{ Str::upper($desa->nama_kabupaten) }}</h2>
+</marquee>
+<div class="d-flex justify-content-center text-white">
+    <div id="clock" style="margin-right: 5px;"></div>
+    <div id="date"></div>
+</div>
 @endsection
 
 @section('content')
@@ -99,7 +106,7 @@
     </div>
 </div> -->
 @if ($berita->count() > 0)
-<section class="mb-5">
+<section class="mb-5 mt-7">
     <div class="row">
         <div class="col-md">
             <div class="header-body text-center mt-5 mb-3">
@@ -247,5 +254,50 @@
             }
         });
     });
+</script>
+<script type="text/javascript">
+    function showTime() {
+        var a_p = "";
+        var today = new Date();
+        var curr_hour = today.getHours();
+        var curr_minute = today.getMinutes();
+        var curr_second = today.getSeconds();
+        if (curr_hour < 12) {
+            // a_p = "AM";
+        } else {
+            // a_p = "PM";
+        }
+        if (curr_hour == 0) {
+            curr_hour = 12;
+        }
+        if (curr_hour > 12) {
+            curr_hour = curr_hour - 12;
+        }
+        curr_hour = checkTime(curr_hour);
+        curr_minute = checkTime(curr_minute);
+        curr_second = checkTime(curr_second);
+        document.getElementById('clock').innerHTML = curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    setInterval(showTime, 500);
+</script>
+<!-- Menampilkan Hari, Bulan dan Tahun -->
+<script type='text/javascript'>
+    var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth();
+    var thisDay = date.getDay(),
+        thisDay = myDays[thisDay];
+    var yy = date.getYear();
+    var year = (yy < 1000) ? yy + 1900 : yy;
+    document.getElementById('date').innerHTML = thisDay + ', ' + day + ' ' + months[month] + ' ' + year;
 </script>
 @endpush
