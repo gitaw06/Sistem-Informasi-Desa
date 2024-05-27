@@ -196,14 +196,21 @@ $desa = App\Desa::find(1);
             <div class="container">
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-left text-muted">
-                            © {{ date('Y') }} <a href="{{ url('') }}" class="font-weight-bold ml-1" target="_blank">Desa {{ $desa->nama_desa }}</a>
+                        <div class="copyright text-center text-xl-left text-white">
+                            <!-- © {{ date('Y') }} <a href="{{ url('') }}" class="font-weight-bold ml-1" target="_blank">Desa {{ $desa->nama_desa }}</a> -->
+                            <i class="fa fa-whatsapp mr-1"></i>
+                            <a href="https://wa.me/6282114811997" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: white">+62 821-1481-1997</a>
+                        </div>
+                        <div class="copyright text-center text-xl-left text-white">
+                            <!-- © {{ date('Y') }} <a href="{{ url('') }}" class="font-weight-bold ml-1" target="_blank">Desa {{ $desa->nama_desa }}</a> -->
+                            <i class="fas fa-envelope mr-1"></i>
+                            <a href="mailto:nazriakir21@gmail" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: white">nazriakir21@gmail.com</a>
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-right text-muted">
+                        <!-- <div class="copyright text-center text-xl-right text-muted">
                             Powered By <a href="https://github.com/maulanakevinp/simapeda/tree/1.2" class="font-weight-bold ml-1" target="_blank">SIMAPEDA</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
