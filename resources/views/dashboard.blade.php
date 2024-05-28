@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Selamat Datang')
 
 @section('styles')
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
@@ -359,5 +359,32 @@
             });
         });
     });
+</script>
+@endpush
+
+@push('scripts')
+<script>
+    function updateTitleTime() {
+        var now = new Date();
+        var formattedTime = now.toLocaleString('id-ID', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        var title = document.getElementById('brand');
+        title.innerHTML = formattedTime;
+        if (title.innerHTML === "Selamat Datang") {
+            title.innerHTML = 'Selamat Datang, ' + formattedTime;
+        }
+    }
+
+    // Update title immediately when page loads
+    updateTitleTime();
+
+    // Update title every second
+    setInterval(updateTitleTime, 1000);
 </script>
 @endpush

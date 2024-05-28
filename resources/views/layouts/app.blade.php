@@ -56,6 +56,7 @@ $desa = App\Desa::find(1);
             <div class="container-fluid">
                 <!-- Brand -->
                 <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">@yield('title')</a>
+                <p id="brand" class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">@yield('title')</p>
                 <!-- Form -->
                 @yield('form-search')
                 <!-- User -->
