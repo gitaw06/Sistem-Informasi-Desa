@@ -45,26 +45,34 @@
 @endsection
 
 @section('content')
-<div class="row mt-8 text-white">
+<div class="row mt-8">
     <div class="col-md-4">
-        <h1 class="text-white">Visi</h1>
-        <p>Mewujudkan Desa Tasik Serai Barat sebagai salah satu desa sejahtera di kabupaten Bengkalis</p>
-        <h1 class="text-white">Misi</h1>
-        <ul>
-            <li>Meningkatkan tata pemerintahan yang demokratis, transparan, akuntabel, efisien dan efektif</li>
-            <li>Meningkatkan sumber daya manusia</li>
-            <li>Meningkatkan perekonomian pedesaan</li>
-            <li>Meningkatkan pembangunan infrastruktur pedesaan yang terarah dan berkualitas</li>
-            <li>Meningkatkan peran kelembagaan dan masyarakat desa dalam mendorong pembangunan desa</li>
-        </ul>
+        <div class="card p-3">
+            <h1>Visi</h1>
+            <ul>
+                <li>Mewujudkan Desa Tasik Serai Barat sebagai salah satu desa sejahtera di kabupaten Bengkalis</li>
+            </ul>
+            <h1>Misi</h1>
+            <ul>
+                <li>Meningkatkan tata pemerintahan yang demokratis, transparan, akuntabel, efisien dan efektif</li>
+                <li>Meningkatkan sumber daya manusia</li>
+                <li>Meningkatkan perekonomian pedesaan</li>
+                <li>Meningkatkan pembangunan infrastruktur pedesaan yang terarah dan berkualitas</li>
+                <li>Meningkatkan peran kelembagaan dan masyarakat desa dalam mendorong pembangunan desa</li>
+            </ul>
+        </div>
     </div>
     <div class="col-md-4">
-        <h1 class="text-white">Keterangan Desa</h1>
-        <p>Desa Tasik Serai Barat adalah Desa yang berada di wilayah kecamatan Mandau kabupaten Bengkalis, kemudian menjadi kecamatan pinggir kabupaten Bengkalis. Desa Tasik Serai Barat berdiri pada tahun 1930 sebelum merdeka sudah terbentuk kepenghuluan</p>
+        <div class="card p-3">
+            <h1>Keterangan Desa</h1>
+            <p class="text-justify">Desa Tasik Serai Barat adalah Desa yang berada di wilayah kecamatan Mandau kabupaten Bengkalis, kemudian menjadi kecamatan pinggir kabupaten Bengkalis. Desa Tasik Serai Barat berdiri pada tahun 1930 sebelum merdeka sudah terbentuk kepenghuluan</p>
+        </div>
     </div>
     <div class="col-md-4">
-        <img src="{{ URL::to('/') }}/img/desa1.jpeg" alt="Tasik Serai Barat" class="img-fluid rounded mb-3">
-        <img src="{{ URL::to('/') }}/img/desa2.jpeg" alt="Tasik Serai Barat" class="img-fluid rounded">
+        <div class="card p-3">
+            <img src="{{ URL::to('/') }}/img/desa1.jpeg" alt="Tasik Serai Barat" class="img-fluid rounded mb-3">
+            <img src="{{ URL::to('/') }}/img/desa2.jpeg" alt="Tasik Serai Barat" class="img-fluid rounded">
+        </div>
     </div>
 </div>
 <div class="row">
