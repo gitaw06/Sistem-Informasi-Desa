@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.masuk');
+        return view('auth.login');
     }
 
     public function masuk(Request $request)
