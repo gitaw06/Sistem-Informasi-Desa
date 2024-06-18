@@ -29,7 +29,7 @@ class HomeController extends Controller
                 'id'        => $value->id,
                 'caption'   => $value->caption,
                 'jenis'     => 1,
-                'created_at'=> strtotime($value->created_at),
+                'created_at' => strtotime($value->created_at),
             ];
             array_push($galleries, $gambar);
         }
@@ -40,18 +40,18 @@ class HomeController extends Controller
                 'id'        => $value->video_id,
                 'caption'   => $value->caption,
                 'jenis'     => 2,
-                'created_at'=> strtotime($value->published_at),
+                'created_at' => strtotime($value->published_at),
             ];
             array_push($galleries, $gambar);
         }
 
-        usort($galleries, function($a, $b) {
+        usort($galleries, function ($a, $b) {
             return strlen($a['created_at']) <=> strlen($b['created_at']);
         });
 
-        return view('index', compact('surat', 'desa', 'gallery','berita','pemerintahan_desa','galleries'));
+        return view('home', compact('surat', 'desa', 'gallery', 'berita', 'pemerintahan_desa', 'galleries'));
     }
-    
+
     public function dashboard()
     {
         $surat = Surat::all();
@@ -78,12 +78,12 @@ class HomeController extends Controller
             }
         }
 
-        return view('dashboard', compact('surat','hari','bulan','tahun','totalCetakSurat','totalPenduduk'));
+        return view('dashboard', compact('surat', 'hari', 'bulan', 'tahun', 'totalCetakSurat', 'totalPenduduk'));
     }
 
     public function suratHarian(Request $request)
     {
-        $date = $request->tanggal ? date('Y-m-d',strtotime($request->tanggal)) : date('Y-m-d');
+        $date = $request->tanggal ? date('Y-m-d', strtotime($request->tanggal)) : date('Y-m-d');
         $surat = Surat::all();
         $data = array();
         foreach ($surat as $value) {
@@ -98,7 +98,7 @@ class HomeController extends Controller
                 }
             }
 
-            array_push($data, [$value->nama,$nilai]);
+            array_push($data, [$value->nama, $nilai]);
         }
 
         return response()->json($data);
@@ -106,7 +106,7 @@ class HomeController extends Controller
 
     public function suratBulanan(Request $request)
     {
-        $date = $request->bulan ? date('Y-m',strtotime($request->bulan)) : date('Y-m');
+        $date = $request->bulan ? date('Y-m', strtotime($request->bulan)) : date('Y-m');
         $surat = Surat::all();
         $data = array();
         foreach ($surat as $value) {
@@ -121,7 +121,7 @@ class HomeController extends Controller
                 }
             }
 
-            array_push($data, [$value->nama,$nilai]);
+            array_push($data, [$value->nama, $nilai]);
         }
 
         return response()->json($data);
@@ -144,7 +144,7 @@ class HomeController extends Controller
                 }
             }
 
-            array_push($data, [$value->nama,$nilai]);
+            array_push($data, [$value->nama, $nilai]);
         }
 
         return response()->json($data);

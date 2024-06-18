@@ -114,12 +114,12 @@
                     <span class="nav-link-inner--text">Kelola Gallery</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link @if (Request::segment(1) == 'slider') active @endif" href="{{ route('slider.index') }}">
                     <i class="fas fa-images text-purple"></i>
                     <span class="nav-link-inner--text">Kelola Slider</span>
                 </a>
-            </li>
+            </li> -->
             @endif
 
         </ul>
