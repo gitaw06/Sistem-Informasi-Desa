@@ -10,7 +10,7 @@ Profil Pengguna
 
 @section('content-header')
 
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-image: url({{ asset('/img/cover-bg-profil.jpg') }}); background-size: cover; background-position: center top;">
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-image: url({{ asset('/img/kantordesakerato.jpg') }}); background-size: cover; background-position: center top;">
 
     <!-- Mask -->
     <span class="mask bg-gradient-primary opacity-6"></span>
@@ -77,9 +77,9 @@ Profil Pengguna
                             <label class="form-control-label" for="input-nama">Nama</label>
                             <input name="nama" type="text" id="input-nama" class="form-control form-control-alternative @error('nama') is-invalid @enderror" placeholder="Masukkan nama ..." value="{{ old('nama',auth()->user()->nama) }}">
                             @error('nama')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -101,17 +101,17 @@ Profil Pengguna
 <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
 
 <script>
-    $(document).ready(function(){
-        $('#btn-ganti-foto_profil').on('click', function () {
+    $(document).ready(function() {
+        $('#btn-ganti-foto_profil').on('click', function() {
             $('#input-foto_profil').click();
         });
 
-        $(document).on("submit","form", function () {
-            $(this).children("button:submit").attr('disabled','disabled');
+        $(document).on("submit", "form", function() {
+            $(this).children("button:submit").attr('disabled', 'disabled');
             $(this).children("button:submit").html(`<img height="20px" src="{{ url('/storage/loading.gif') }}" alt=""> Loading ...`);
         });
 
-        $('#input-foto_profil').on('change', function () {
+        $('#input-foto_profil').on('change', function() {
             if (this.files && this.files[0]) {
                 let formData = new FormData();
                 let oFReader = new FileReader();
@@ -127,10 +127,10 @@ Profil Pengguna
                     contentType: false,
                     cache: false,
                     processData: false,
-                    beforeSend: function () {
+                    beforeSend: function() {
                         $('#img-foto_profil').attr('src', "{{ url('/storage/loading.gif') }}");
                     },
-                    success: function (data) {
+                    success: function(data) {
                         if (data.error) {
                             $('#img-foto_profil').attr('src', $("#img-foto_profil").attr('alt'));
                         } else {

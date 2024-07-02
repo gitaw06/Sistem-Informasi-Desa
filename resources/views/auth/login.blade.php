@@ -54,7 +54,7 @@ $desa = App\Desa::find(1);
                Login
             </h1>
             <div class="text-center mb-4">
-               <img height="150px" src="{{ url('/storage/logo1.png') }}" alt="logo">
+               <img height="150px" src="{{ url('/storage/logo_sumbawa.png') }}" alt="logo">
             </div>
             <form role="form" action="{{ route('masuk') }}" method="POST">
                @csrf
